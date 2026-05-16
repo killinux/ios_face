@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Face Capture needs camera access for facial expression tracking using ARKit.</string>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>Face Capture sends tracking data to Blender over your local network.</string>
+	<key>NSBonjourServices</key>
+	<array>
+		<string>_facecap._udp</string>
+	</array>
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>arkit</string>
+		<string>iphone-ipad-minimum-performance-a12</string>
+	</array>
+</dict>
+</plist>

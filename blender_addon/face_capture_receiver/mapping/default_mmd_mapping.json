@@ -1,0 +1,249 @@
+{
+  "version": 1,
+  "description": "Default ARKit to MMD morph mapping for standard MMD models",
+  "mappings": [
+    {
+      "target_morph": "まばたき",
+      "type": "combined_max",
+      "sources": [
+        {"arkit": "eyeBlinkLeft", "weight": 1.0},
+        {"arkit": "eyeBlinkRight", "weight": 1.0}
+      ],
+      "curve": "linear",
+      "threshold": 0.1
+    },
+    {
+      "target_morph": "ウインク",
+      "type": "direct",
+      "sources": [
+        {"arkit": "eyeBlinkLeft", "weight": 1.2}
+      ],
+      "suppress_when": {"morph": "まばたき", "above": 0.7},
+      "curve": "ease_in"
+    },
+    {
+      "target_morph": "ウインク右",
+      "type": "direct",
+      "sources": [
+        {"arkit": "eyeBlinkRight", "weight": 1.2}
+      ],
+      "suppress_when": {"morph": "まばたき", "above": 0.7},
+      "curve": "ease_in"
+    },
+    {
+      "target_morph": "笑い",
+      "type": "combined_avg",
+      "sources": [
+        {"arkit": "cheekSquintLeft", "weight": 0.6},
+        {"arkit": "cheekSquintRight", "weight": 0.6},
+        {"arkit": "mouthSmileLeft", "weight": 0.3},
+        {"arkit": "mouthSmileRight", "weight": 0.3}
+      ],
+      "curve": "ease_out"
+    },
+    {
+      "target_morph": "じと目",
+      "type": "combined_avg",
+      "sources": [
+        {"arkit": "eyeSquintLeft", "weight": 0.8},
+        {"arkit": "eyeSquintRight", "weight": 0.8}
+      ],
+      "subtract": [
+        {"arkit": "mouthSmileLeft", "weight": 0.3},
+        {"arkit": "mouthSmileRight", "weight": 0.3}
+      ],
+      "curve": "linear",
+      "threshold": 0.15
+    },
+    {
+      "target_morph": "びっくり",
+      "type": "combined_avg",
+      "sources": [
+        {"arkit": "eyeWideLeft", "weight": 0.7},
+        {"arkit": "eyeWideRight", "weight": 0.7},
+        {"arkit": "browInnerUp", "weight": 0.3}
+      ],
+      "curve": "linear"
+    },
+    {
+      "target_morph": "上",
+      "type": "combined_avg",
+      "sources": [
+        {"arkit": "browInnerUp", "weight": 0.5},
+        {"arkit": "browOuterUpLeft", "weight": 0.5},
+        {"arkit": "browOuterUpRight", "weight": 0.5}
+      ],
+      "curve": "linear"
+    },
+    {
+      "target_morph": "下",
+      "type": "combined_avg",
+      "sources": [
+        {"arkit": "browDownLeft", "weight": 0.7},
+        {"arkit": "browDownRight", "weight": 0.7}
+      ],
+      "curve": "linear"
+    },
+    {
+      "target_morph": "怒り",
+      "type": "weighted_sum",
+      "sources": [
+        {"arkit": "browDownLeft", "weight": 0.6},
+        {"arkit": "browDownRight", "weight": 0.6}
+      ],
+      "subtract": [
+        {"arkit": "browInnerUp", "weight": 0.4}
+      ],
+      "curve": "linear",
+      "threshold": 0.1
+    },
+    {
+      "target_morph": "困る",
+      "type": "weighted_sum",
+      "sources": [
+        {"arkit": "browInnerUp", "weight": 0.6},
+        {"arkit": "browDownLeft", "weight": 0.2},
+        {"arkit": "browDownRight", "weight": 0.2}
+      ],
+      "curve": "linear",
+      "threshold": 0.15
+    },
+    {
+      "target_morph": "あ",
+      "type": "weighted_sum",
+      "sources": [
+        {"arkit": "jawOpen", "weight": 0.7},
+        {"arkit": "mouthFunnel", "weight": 0.3}
+      ],
+      "curve": "power_1.5"
+    },
+    {
+      "target_morph": "い",
+      "type": "weighted_sum",
+      "sources": [
+        {"arkit": "mouthStretchLeft", "weight": 0.5},
+        {"arkit": "mouthStretchRight", "weight": 0.5}
+      ],
+      "subtract": [
+        {"arkit": "jawOpen", "weight": 0.3}
+      ],
+      "curve": "linear"
+    },
+    {
+      "target_morph": "う",
+      "type": "weighted_sum",
+      "sources": [
+        {"arkit": "mouthPucker", "weight": 0.8},
+        {"arkit": "mouthFunnel", "weight": 0.4}
+      ],
+      "subtract": [
+        {"arkit": "mouthStretchLeft", "weight": 0.2},
+        {"arkit": "mouthStretchRight", "weight": 0.2}
+      ],
+      "curve": "linear"
+    },
+    {
+      "target_morph": "え",
+      "type": "weighted_sum",
+      "sources": [
+        {"arkit": "mouthStretchLeft", "weight": 0.3},
+        {"arkit": "mouthStretchRight", "weight": 0.3},
+        {"arkit": "jawOpen", "weight": 0.3}
+      ],
+      "subtract": [
+        {"arkit": "mouthPucker", "weight": 0.3}
+      ],
+      "curve": "linear",
+      "threshold": 0.1
+    },
+    {
+      "target_morph": "お",
+      "type": "weighted_sum",
+      "sources": [
+        {"arkit": "jawOpen", "weight": 0.5},
+        {"arkit": "mouthFunnel", "weight": 0.5}
+      ],
+      "subtract": [
+        {"arkit": "mouthStretchLeft", "weight": 0.3},
+        {"arkit": "mouthStretchRight", "weight": 0.3}
+      ],
+      "curve": "linear"
+    },
+    {
+      "target_morph": "にやり",
+      "type": "combined_avg",
+      "sources": [
+        {"arkit": "mouthSmileLeft", "weight": 0.7},
+        {"arkit": "mouthSmileRight", "weight": 0.7}
+      ],
+      "subtract": [
+        {"arkit": "jawOpen", "weight": 0.4}
+      ],
+      "curve": "ease_out"
+    },
+    {
+      "target_morph": "ω",
+      "type": "weighted_sum",
+      "sources": [
+        {"arkit": "mouthPucker", "weight": 0.6},
+        {"arkit": "mouthFunnel", "weight": 0.3},
+        {"arkit": "mouthSmileLeft", "weight": 0.2},
+        {"arkit": "mouthSmileRight", "weight": 0.2}
+      ],
+      "curve": "ease_in",
+      "threshold": 0.2
+    },
+    {
+      "target_morph": "▲",
+      "type": "weighted_sum",
+      "sources": [
+        {"arkit": "mouthSmileLeft", "weight": 0.4},
+        {"arkit": "mouthSmileRight", "weight": 0.4}
+      ],
+      "subtract": [
+        {"arkit": "jawOpen", "weight": 0.5},
+        {"arkit": "mouthFunnel", "weight": 0.3}
+      ],
+      "curve": "linear",
+      "threshold": 0.2
+    },
+    {
+      "target_morph": "べー",
+      "type": "direct",
+      "sources": [
+        {"arkit": "tongueOut", "weight": 1.0}
+      ],
+      "curve": "linear",
+      "threshold": 0.1
+    },
+    {
+      "target_morph": "ぺろっ",
+      "type": "direct",
+      "sources": [
+        {"arkit": "tongueOut", "weight": 1.0}
+      ],
+      "curve": "linear",
+      "threshold": 0.1
+    }
+  ],
+  "head_bone": {
+    "target": "頭",
+    "fallback_targets": ["head", "Head", "あたま"],
+    "rotation_scale": 0.8,
+    "coordinate_remap_note": "ARKit right-handed to MMD left-handed: negate x and z"
+  },
+  "eye_bones": {
+    "left": {
+      "target": "左目",
+      "fallback_targets": ["eye_L", "Eye_L", "LeftEye"],
+      "h_limit": 30,
+      "v_limit": 20
+    },
+    "right": {
+      "target": "右目",
+      "fallback_targets": ["eye_R", "Eye_R", "RightEye"],
+      "h_limit": 30,
+      "v_limit": 20
+    }
+  }
+}
